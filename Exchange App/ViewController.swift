@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
+    let disposeBag = DisposeBag()
+
+    lazy var refreshTrigger = PublishSubject<Void>()
+    lazy var selectTrigger = PublishSubject<Void>()
+
+    lazy var exchangeRatesApi = ExchangeRatesApi(requestAdapter: BaseRequestAdapter(host: "https://api.exchangeratesapi.io/"))
+    lazy var viewModel = ExchangeListViewModel<RatesResponseType.Default>(uiTriggers: (refreshTrigger: refreshTrigger, selectTrigger: selectTrigger),
+                                                                          exchangeRatesApi: exchangeRatesApi)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        viewModel.selectedCurrency.accept(.AUD)
     }
 
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshTrigger.onNext(())
+    }
 }
-

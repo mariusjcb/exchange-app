@@ -10,13 +10,17 @@ import Foundation
 
 extension DateFormatter {
     enum Formats: String {
-        case dateOnly = "yyyy--MM--dd"
+        case dateOnly = "yyyy-MM-dd"
 
-        var formatter: DateFormatter {
-            return DateFormatter.from(rawValue)
+        static var `default`: Formats {
+            .dateOnly
         }
     }
+}
 
+// MARK: - Helpers
+
+extension DateFormatter {
     static func from(_ format: String) -> DateFormatter {
         return DateFormatter().withFormat(format)
     }
@@ -28,8 +32,20 @@ extension DateFormatter {
     }
 }
 
+extension DateFormatter.Formats {
+    var formatter: DateFormatter {
+        return DateFormatter.from(rawValue)
+    }
+}
+
 extension Date {
     func convert(to format: DateFormatter.Formats) -> String {
         return format.formatter.string(from: self)
+    }
+}
+
+extension String {
+    func convert(to format: DateFormatter.Formats) -> Date? {
+        return format.formatter.date(from: self)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 extension DateFormatter {
     enum Formats: String {
+        case hoursMinutes = "HH:mm:ss"
         case dateOnly = "yyyy-MM-dd"
 
         static var `default`: Formats {

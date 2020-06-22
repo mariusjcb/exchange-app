@@ -17,6 +17,9 @@
 		7A1C4ABC249E91DF00756F7D /* Exchange_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C4ABB249E91DF00756F7D /* Exchange_AppTests.swift */; };
 		7A1C4AC7249E91DF00756F7D /* Exchange_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C4AC6249E91DF00756F7D /* Exchange_AppUITests.swift */; };
 		7A1E2C9B249FAEFC002D3AC1 /* ReactiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2C9A249FAEFC002D3AC1 /* ReactiveExtensions.swift */; };
+		7A1E2C9E249FC92A002D3AC1 /* UIImage+AverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2C9D249FC92A002D3AC1 /* UIImage+AverageColor.swift */; };
+		7A1E2CA2249FC9FF002D3AC1 /* UIImageColors in Frameworks */ = {isa = PBXBuildFile; productRef = 7A1E2CA1249FC9FF002D3AC1 /* UIImageColors */; };
+		7A1E2CA4249FCAB7002D3AC1 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E2CA3249FCAB7002D3AC1 /* UIView+Shadow.swift */; };
 		7A1E7627249EDE69005EB941 /* BaseRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E7626249EDE69005EB941 /* BaseRequestAdapter.swift */; };
 		7A1E7629249EDE99005EB941 /* URLPrintProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E7628249EDE99005EB941 /* URLPrintProtocol.swift */; };
 		7A1E762B249EE015005EB941 /* SessionManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E762A249EE015005EB941 /* SessionManagerExtensions.swift */; };
@@ -24,6 +27,8 @@
 		7A1E7630249EE058005EB941 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E762F249EE058005EB941 /* ApiError.swift */; };
 		7A1E7633249EE0A5005EB941 /* ExchangeRatesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E7632249EE0A5005EB941 /* ExchangeRatesApi.swift */; };
 		7A1E7636249EE492005EB941 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E7635249EE492005EB941 /* DateFormatters.swift */; };
+		7A44029824A047C8009FA715 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44029724A047C8009FA715 /* HomeViewController.swift */; };
+		7A44029A24A047E8009FA715 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44029924A047E8009FA715 /* HistoryViewController.swift */; };
 		7A56D994249F479500802F29 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D993249F479500802F29 /* EncodableExtensions.swift */; };
 		7A56D997249F47AE00802F29 /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D996249F47AE00802F29 /* CommonError.swift */; };
 		7A56D999249F5ECC00802F29 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D998249F5ECC00802F29 /* CodableExtensions.swift */; };
@@ -32,11 +37,19 @@
 		7A67E145249F847A00E99CB4 /* RatesResponseTypeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E144249F847A00E99CB4 /* RatesResponseTypeDecoder.swift */; };
 		7A67E147249F904700E99CB4 /* Date+CodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E146249F904700E99CB4 /* Date+CodingKey.swift */; };
 		7A67E14A249F928700E99CB4 /* RatesResponseTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */; };
-		7A67E14C249F947200E99CB4 /* ExchangeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E14B249F947200E99CB4 /* ExchangeList.swift */; };
+		7A67E14C249F947200E99CB4 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E14B249F947200E99CB4 /* ExchangeViewModel.swift */; };
 		7A67E14F249F964F00E99CB4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E14E249F964F00E99CB4 /* ViewModel.swift */; };
 		7A826653249ED7EE007329B1 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A826652249ED7EE007329B1 /* BaseApi.swift */; };
+		7AE0CE63249FD9B200743877 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE62249FD9B200743877 /* LineChart.swift */; };
+		7AE0CE65249FEAC600743877 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE64249FEAC600743877 /* BaseViewController.swift */; };
+		7AE0CE76249FF3AA00743877 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE75249FF3AA00743877 /* SplashViewController.swift */; };
+		7AE0CE7924A008F600743877 /* BigCurrencyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE7824A008F600743877 /* BigCurrencyCardCell.swift */; };
+		7AE0CE8624A0138500743877 /* CurrencyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE8524A0138500743877 /* CurrencyCardViewModel.swift */; };
+		7AE0CE8924A01BB100743877 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE0CE8824A01BB100743877 /* RxDataSources */; };
+		7AE0CE8D24A032F700743877 /* RateCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE8C24A032F700743877 /* RateCardCell.swift */; };
+		7AE0CE9124A041D400743877 /* ExchangeViewModel+DefaultRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE9024A041D400743877 /* ExchangeViewModel+DefaultRates.swift */; };
+		7AE0CE9424A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE9324A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift */; };
 		7AE4032B249EEAE30091EF3B /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE4032A249EEAE30091EF3B /* DataExtensions.swift */; };
-		7AE40337249F3B940091EF3B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE40336249F3B940091EF3B /* Charts */; };
 		7AE4033A249F3BFC0091EF3B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE40339249F3BFC0091EF3B /* Alamofire */; };
 		7AE4033D249F3C2F0091EF3B /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE4033C249F3C2F0091EF3B /* RxAlamofire */; };
 		7AE40340249F3C640091EF3B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE4033F249F3C640091EF3B /* RxSwift */; };
@@ -85,6 +98,8 @@
 		7A1C4AD4249E92A300756F7D /* Exchange App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Exchange App.entitlements"; sourceTree = "<group>"; };
 		7A1C4AD5249E985500756F7D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7A1E2C9A249FAEFC002D3AC1 /* ReactiveExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveExtensions.swift; sourceTree = "<group>"; };
+		7A1E2C9D249FC92A002D3AC1 /* UIImage+AverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AverageColor.swift"; sourceTree = "<group>"; };
+		7A1E2CA3249FCAB7002D3AC1 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		7A1E7626249EDE69005EB941 /* BaseRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestAdapter.swift; sourceTree = "<group>"; };
 		7A1E7628249EDE99005EB941 /* URLPrintProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPrintProtocol.swift; sourceTree = "<group>"; };
 		7A1E762A249EE015005EB941 /* SessionManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerExtensions.swift; sourceTree = "<group>"; };
@@ -92,6 +107,8 @@
 		7A1E762F249EE058005EB941 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		7A1E7632249EE0A5005EB941 /* ExchangeRatesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesApi.swift; sourceTree = "<group>"; };
 		7A1E7635249EE492005EB941 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		7A44029724A047C8009FA715 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7A44029924A047E8009FA715 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		7A56D993249F479500802F29 /* EncodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtensions.swift; sourceTree = "<group>"; };
 		7A56D996249F47AE00802F29 /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
 		7A56D998249F5ECC00802F29 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
@@ -100,9 +117,17 @@
 		7A67E144249F847A00E99CB4 /* RatesResponseTypeDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponseTypeDecoder.swift; sourceTree = "<group>"; };
 		7A67E146249F904700E99CB4 /* Date+CodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+CodingKey.swift"; sourceTree = "<group>"; };
 		7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponseTypes.swift; sourceTree = "<group>"; };
-		7A67E14B249F947200E99CB4 /* ExchangeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeList.swift; sourceTree = "<group>"; };
+		7A67E14B249F947200E99CB4 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		7A67E14E249F964F00E99CB4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7A826652249ED7EE007329B1 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		7AE0CE62249FD9B200743877 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		7AE0CE64249FEAC600743877 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7AE0CE75249FF3AA00743877 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		7AE0CE7824A008F600743877 /* BigCurrencyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCurrencyCardCell.swift; sourceTree = "<group>"; };
+		7AE0CE8524A0138500743877 /* CurrencyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCardViewModel.swift; sourceTree = "<group>"; };
+		7AE0CE8C24A032F700743877 /* RateCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCardCell.swift; sourceTree = "<group>"; };
+		7AE0CE9024A041D400743877 /* ExchangeViewModel+DefaultRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExchangeViewModel+DefaultRates.swift"; sourceTree = "<group>"; };
+		7AE0CE9324A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExchangeViewModel+DateGroupedRates.swift"; sourceTree = "<group>"; };
 		7AE4032A249EEAE30091EF3B /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		7AE4034A249F40130091EF3B /* RatesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesParam.swift; sourceTree = "<group>"; };
 		7AE4034E249F40770091EF3B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -119,7 +144,8 @@
 				7AE4033D249F3C2F0091EF3B /* RxAlamofire in Frameworks */,
 				7AE40346249F3C640091EF3B /* RxCocoa in Frameworks */,
 				7AE40340249F3C640091EF3B /* RxSwift in Frameworks */,
-				7AE40337249F3B940091EF3B /* Charts in Frameworks */,
+				7AE0CE8924A01BB100743877 /* RxDataSources in Frameworks */,
+				7A1E2CA2249FC9FF002D3AC1 /* UIImageColors in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,10 +196,10 @@
 				7A56D991249F478300802F29 /* Common */,
 				7A826650249ED7CD007329B1 /* Api Module */,
 				7A67E148249F90AB00E99CB4 /* ViewModels */,
+				7A1E2C9C249FC91B002D3AC1 /* UI */,
 				7A1C4AD4249E92A300756F7D /* Exchange App.entitlements */,
 				7A1C4AA1249E91DD00756F7D /* AppDelegate.swift */,
 				7A1C4AA3249E91DD00756F7D /* SceneDelegate.swift */,
-				7A1C4AA5249E91DD00756F7D /* ViewController.swift */,
 				7A1C4AA7249E91DD00756F7D /* Main.storyboard */,
 				7A1C4AAD249E91DF00756F7D /* Assets.xcassets */,
 				7A1C4AAF249E91DF00756F7D /* LaunchScreen.storyboard */,
@@ -201,12 +227,44 @@
 			path = "Exchange AppUITests";
 			sourceTree = "<group>";
 		};
+		7A1E2C9C249FC91B002D3AC1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7AE0CE61249FD9A800743877 /* LineChart */,
+				7A1E2C9F249FC92D002D3AC1 /* Extensions */,
+				7AE0CE7724A008E100743877 /* Cells */,
+				7A44029524A047A9009FA715 /* Base */,
+				7AE0CE75249FF3AA00743877 /* SplashViewController.swift */,
+				7A44029724A047C8009FA715 /* HomeViewController.swift */,
+				7A44029924A047E8009FA715 /* HistoryViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7A1E2C9F249FC92D002D3AC1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7A1E2C9D249FC92A002D3AC1 /* UIImage+AverageColor.swift */,
+				7A1E2CA3249FCAB7002D3AC1 /* UIView+Shadow.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7A1E762E249EE04C005EB941 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
 				7A1E762F249EE058005EB941 /* ApiError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		7A44029524A047A9009FA715 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7AE0CE64249FEAC600743877 /* BaseViewController.swift */,
+				7A1C4AA5249E91DD00756F7D /* ViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		7A56D991249F478300802F29 /* Common */ = {
@@ -249,8 +307,9 @@
 		7A67E148249F90AB00E99CB4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7A67E14E249F964F00E99CB4 /* ViewModel.swift */,
-				7A67E14B249F947200E99CB4 /* ExchangeList.swift */,
+				7AE0CE8F24A041B700743877 /* Base */,
+				7AE0CE8E24A041AB00743877 /* ExchangeViewModel */,
+				7AE0CE8524A0138500743877 /* CurrencyCardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -286,6 +345,41 @@
 				7A67E146249F904700E99CB4 /* Date+CodingKey.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7AE0CE61249FD9A800743877 /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				7AE0CE62249FD9B200743877 /* LineChart.swift */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
+		7AE0CE7724A008E100743877 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7AE0CE7824A008F600743877 /* BigCurrencyCardCell.swift */,
+				7AE0CE8C24A032F700743877 /* RateCardCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7AE0CE8E24A041AB00743877 /* ExchangeViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A67E14B249F947200E99CB4 /* ExchangeViewModel.swift */,
+				7AE0CE9024A041D400743877 /* ExchangeViewModel+DefaultRates.swift */,
+				7AE0CE9324A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift */,
+			);
+			path = ExchangeViewModel;
+			sourceTree = "<group>";
+		};
+		7AE0CE8F24A041B700743877 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7A67E14E249F964F00E99CB4 /* ViewModel.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		7AE40349249F3FDA0091EF3B /* Models */ = {
@@ -333,12 +427,13 @@
 			);
 			name = "Exchange App";
 			packageProductDependencies = (
-				7AE40336249F3B940091EF3B /* Charts */,
 				7AE40339249F3BFC0091EF3B /* Alamofire */,
 				7AE4033C249F3C2F0091EF3B /* RxAlamofire */,
 				7AE4033F249F3C640091EF3B /* RxSwift */,
 				7AE40343249F3C640091EF3B /* RxRelay */,
 				7AE40345249F3C640091EF3B /* RxCocoa */,
+				7A1E2CA1249FC9FF002D3AC1 /* UIImageColors */,
+				7AE0CE8824A01BB100743877 /* RxDataSources */,
 			);
 			productName = "Exchange App";
 			productReference = 7A1C4A9E249E91DD00756F7D /* Exchange App.app */;
@@ -417,10 +512,11 @@
 			);
 			mainGroup = 7A1C4A95249E91DD00756F7D;
 			packageReferences = (
-				7AE40335249F3B940091EF3B /* XCRemoteSwiftPackageReference "Charts" */,
 				7AE40338249F3BFC0091EF3B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				7AE4033B249F3C2F0091EF3B /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				7AE4033E249F3C640091EF3B /* XCRemoteSwiftPackageReference "RxSwift" */,
+				7A1E2CA0249FC9FF002D3AC1 /* XCRemoteSwiftPackageReference "UIImageColors" */,
+				7AE0CE8724A01BB100743877 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 7A1C4A9F249E91DD00756F7D /* Products */;
 			projectDirPath = "";
@@ -465,10 +561,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AE0CE9424A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift in Sources */,
 				7A67E145249F847A00E99CB4 /* RatesResponseTypeDecoder.swift in Sources */,
+				7AE0CE9124A041D400743877 /* ExchangeViewModel+DefaultRates.swift in Sources */,
+				7AE0CE76249FF3AA00743877 /* SplashViewController.swift in Sources */,
 				7AE40352249F460F0091EF3B /* RequestParamRepresentable.swift in Sources */,
 				7A56D997249F47AE00802F29 /* CommonError.swift in Sources */,
 				7A1E7636249EE492005EB941 /* DateFormatters.swift in Sources */,
+				7AE0CE65249FEAC600743877 /* BaseViewController.swift in Sources */,
+				7A1E2CA4249FCAB7002D3AC1 /* UIView+Shadow.swift in Sources */,
 				7A1E762B249EE015005EB941 /* SessionManagerExtensions.swift in Sources */,
 				7A1E7627249EDE69005EB941 /* BaseRequestAdapter.swift in Sources */,
 				7AE4034F249F40770091EF3B /* Currency.swift in Sources */,
@@ -477,21 +578,28 @@
 				7A1C4AAC249E91DD00756F7D /* Exchange_App.xcdatamodeld in Sources */,
 				7A1E7630249EE058005EB941 /* ApiError.swift in Sources */,
 				7A1C4AA6249E91DD00756F7D /* ViewController.swift in Sources */,
-				7A67E14C249F947200E99CB4 /* ExchangeList.swift in Sources */,
+				7AE0CE8624A0138500743877 /* CurrencyCardViewModel.swift in Sources */,
+				7A67E14C249F947200E99CB4 /* ExchangeViewModel.swift in Sources */,
+				7AE0CE63249FD9B200743877 /* LineChart.swift in Sources */,
 				7AE4034B249F40130091EF3B /* RatesParam.swift in Sources */,
+				7A44029824A047C8009FA715 /* HomeViewController.swift in Sources */,
 				7A1C4AA2249E91DD00756F7D /* AppDelegate.swift in Sources */,
 				7A67E147249F904700E99CB4 /* Date+CodingKey.swift in Sources */,
+				7AE0CE8D24A032F700743877 /* RateCardCell.swift in Sources */,
 				7A1E2C9B249FAEFC002D3AC1 /* ReactiveExtensions.swift in Sources */,
 				7A67E14A249F928700E99CB4 /* RatesResponseTypes.swift in Sources */,
 				7A1E762D249EE038005EB941 /* RxAlamofireExtensions.swift in Sources */,
 				7A56D999249F5ECC00802F29 /* CodableExtensions.swift in Sources */,
 				7A56D99E249F647100802F29 /* RatesResponse.swift in Sources */,
+				7A44029A24A047E8009FA715 /* HistoryViewController.swift in Sources */,
 				7A56D99C249F62D800802F29 /* ExchangeRatesApiExtensions.swift in Sources */,
 				7A826653249ED7EE007329B1 /* BaseApi.swift in Sources */,
 				7A1E7629249EDE99005EB941 /* URLPrintProtocol.swift in Sources */,
 				7AE4032B249EEAE30091EF3B /* DataExtensions.swift in Sources */,
+				7AE0CE7924A008F600743877 /* BigCurrencyCardCell.swift in Sources */,
 				7A1C4AA4249E91DD00756F7D /* SceneDelegate.swift in Sources */,
 				7A1E7633249EE0A5005EB941 /* ExchangeRatesApi.swift in Sources */,
+				7A1E2C9E249FC92A002D3AC1 /* UIImage+AverageColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,12 +936,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7AE40335249F3B940091EF3B /* XCRemoteSwiftPackageReference "Charts" */ = {
+		7A1E2CA0249FC9FF002D3AC1 /* XCRemoteSwiftPackageReference "UIImageColors" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			repositoryURL = "https://github.com/jathu/UIImageColors.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.5.0;
+				minimumVersion = 2.2.0;
+			};
+		};
+		7AE0CE8724A01BB100743877 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
 			};
 		};
 		7AE40338249F3BFC0091EF3B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -863,10 +979,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7AE40336249F3B940091EF3B /* Charts */ = {
+		7A1E2CA1249FC9FF002D3AC1 /* UIImageColors */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AE40335249F3B940091EF3B /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
+			package = 7A1E2CA0249FC9FF002D3AC1 /* XCRemoteSwiftPackageReference "UIImageColors" */;
+			productName = UIImageColors;
+		};
+		7AE0CE8824A01BB100743877 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AE0CE8724A01BB100743877 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		7AE40339249F3BFC0091EF3B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

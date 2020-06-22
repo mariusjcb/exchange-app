@@ -27,13 +27,16 @@
 		7A1E7630249EE058005EB941 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E762F249EE058005EB941 /* ApiError.swift */; };
 		7A1E7633249EE0A5005EB941 /* ExchangeRatesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E7632249EE0A5005EB941 /* ExchangeRatesApi.swift */; };
 		7A1E7636249EE492005EB941 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E7635249EE492005EB941 /* DateFormatters.swift */; };
-		7A44029824A047C8009FA715 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44029724A047C8009FA715 /* HomeViewController.swift */; };
-		7A44029A24A047E8009FA715 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A44029924A047E8009FA715 /* HistoryViewController.swift */; };
+		7A4402A224A0947F009FA715 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4402A124A0947F009FA715 /* AnimatedImageView.swift */; };
+		7A4402A424A0AC11009FA715 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4402A324A0AC10009FA715 /* ArrayExtensions.swift */; };
 		7A56D994249F479500802F29 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D993249F479500802F29 /* EncodableExtensions.swift */; };
-		7A56D997249F47AE00802F29 /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D996249F47AE00802F29 /* CommonError.swift */; };
+		7A56D997249F47AE00802F29 /* ParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D996249F47AE00802F29 /* ParseError.swift */; };
 		7A56D999249F5ECC00802F29 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D998249F5ECC00802F29 /* CodableExtensions.swift */; };
 		7A56D99C249F62D800802F29 /* ExchangeRatesApiExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D99B249F62D800802F29 /* ExchangeRatesApiExtensions.swift */; };
 		7A56D99E249F647100802F29 /* RatesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D99D249F647100802F29 /* RatesResponse.swift */; };
+		7A5AB2D324A10C5F005619B5 /* SplashViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5AB2D224A10C5F005619B5 /* SplashViewController+Layout.swift */; };
+		7A5AB2D724A10CF2005619B5 /* ViewController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5AB2D624A10CF2005619B5 /* ViewController+Binding.swift */; };
+		7A5AB2D924A10D8F005619B5 /* SplashViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5AB2D824A10D8F005619B5 /* SplashViewController+Navigation.swift */; };
 		7A67E145249F847A00E99CB4 /* RatesResponseTypeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E144249F847A00E99CB4 /* RatesResponseTypeDecoder.swift */; };
 		7A67E147249F904700E99CB4 /* Date+CodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E146249F904700E99CB4 /* Date+CodingKey.swift */; };
 		7A67E14A249F928700E99CB4 /* RatesResponseTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */; };
@@ -107,13 +110,16 @@
 		7A1E762F249EE058005EB941 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		7A1E7632249EE0A5005EB941 /* ExchangeRatesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesApi.swift; sourceTree = "<group>"; };
 		7A1E7635249EE492005EB941 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
-		7A44029724A047C8009FA715 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		7A44029924A047E8009FA715 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		7A4402A124A0947F009FA715 /* AnimatedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
+		7A4402A324A0AC10009FA715 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		7A56D993249F479500802F29 /* EncodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtensions.swift; sourceTree = "<group>"; };
-		7A56D996249F47AE00802F29 /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
+		7A56D996249F47AE00802F29 /* ParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseError.swift; sourceTree = "<group>"; };
 		7A56D998249F5ECC00802F29 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		7A56D99B249F62D800802F29 /* ExchangeRatesApiExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesApiExtensions.swift; sourceTree = "<group>"; };
 		7A56D99D249F647100802F29 /* RatesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponse.swift; sourceTree = "<group>"; };
+		7A5AB2D224A10C5F005619B5 /* SplashViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashViewController+Layout.swift"; sourceTree = "<group>"; };
+		7A5AB2D624A10CF2005619B5 /* ViewController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Binding.swift"; sourceTree = "<group>"; };
+		7A5AB2D824A10D8F005619B5 /* SplashViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashViewController+Navigation.swift"; sourceTree = "<group>"; };
 		7A67E144249F847A00E99CB4 /* RatesResponseTypeDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponseTypeDecoder.swift; sourceTree = "<group>"; };
 		7A67E146249F904700E99CB4 /* Date+CodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+CodingKey.swift"; sourceTree = "<group>"; };
 		7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponseTypes.swift; sourceTree = "<group>"; };
@@ -230,13 +236,11 @@
 		7A1E2C9C249FC91B002D3AC1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7A5AB2DA24A10DDF005619B5 /* Scenes */,
+				7A4402A024A09473009FA715 /* Views */,
 				7AE0CE61249FD9A800743877 /* LineChart */,
 				7A1E2C9F249FC92D002D3AC1 /* Extensions */,
 				7AE0CE7724A008E100743877 /* Cells */,
-				7A44029524A047A9009FA715 /* Base */,
-				7AE0CE75249FF3AA00743877 /* SplashViewController.swift */,
-				7A44029724A047C8009FA715 /* HomeViewController.swift */,
-				7A44029924A047E8009FA715 /* HistoryViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -262,9 +266,16 @@
 			isa = PBXGroup;
 			children = (
 				7AE0CE64249FEAC600743877 /* BaseViewController.swift */,
-				7A1C4AA5249E91DD00756F7D /* ViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		7A4402A024A09473009FA715 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A4402A124A0947F009FA715 /* AnimatedImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7A56D991249F478300802F29 /* Common */ = {
@@ -283,6 +294,7 @@
 				7A56D993249F479500802F29 /* EncodableExtensions.swift */,
 				7A56D998249F5ECC00802F29 /* CodableExtensions.swift */,
 				7A1E2C9A249FAEFC002D3AC1 /* ReactiveExtensions.swift */,
+				7A4402A324A0AC10009FA715 /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,7 +302,7 @@
 		7A56D995249F47A300802F29 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				7A56D996249F47AE00802F29 /* CommonError.swift */,
+				7A56D996249F47AE00802F29 /* ParseError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -302,6 +314,35 @@
 				7A56D99B249F62D800802F29 /* ExchangeRatesApiExtensions.swift */,
 			);
 			path = ExchangeRatesApi;
+			sourceTree = "<group>";
+		};
+		7A5AB2D424A10CC5005619B5 /* SplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AE0CE75249FF3AA00743877 /* SplashViewController.swift */,
+				7A5AB2D224A10C5F005619B5 /* SplashViewController+Layout.swift */,
+				7A5AB2D824A10D8F005619B5 /* SplashViewController+Navigation.swift */,
+			);
+			path = SplashViewController;
+			sourceTree = "<group>";
+		};
+		7A5AB2D524A10CE2005619B5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7A1C4AA5249E91DD00756F7D /* ViewController.swift */,
+				7A5AB2D624A10CF2005619B5 /* ViewController+Binding.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7A5AB2DA24A10DDF005619B5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7A44029524A047A9009FA715 /* Base */,
+				7A5AB2D524A10CE2005619B5 /* ViewController */,
+				7A5AB2D424A10CC5005619B5 /* SplashViewController */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		7A67E148249F90AB00E99CB4 /* ViewModels */ = {
@@ -564,17 +605,21 @@
 				7AE0CE9424A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift in Sources */,
 				7A67E145249F847A00E99CB4 /* RatesResponseTypeDecoder.swift in Sources */,
 				7AE0CE9124A041D400743877 /* ExchangeViewModel+DefaultRates.swift in Sources */,
+				7A5AB2D324A10C5F005619B5 /* SplashViewController+Layout.swift in Sources */,
+				7A4402A224A0947F009FA715 /* AnimatedImageView.swift in Sources */,
 				7AE0CE76249FF3AA00743877 /* SplashViewController.swift in Sources */,
 				7AE40352249F460F0091EF3B /* RequestParamRepresentable.swift in Sources */,
-				7A56D997249F47AE00802F29 /* CommonError.swift in Sources */,
+				7A56D997249F47AE00802F29 /* ParseError.swift in Sources */,
 				7A1E7636249EE492005EB941 /* DateFormatters.swift in Sources */,
 				7AE0CE65249FEAC600743877 /* BaseViewController.swift in Sources */,
 				7A1E2CA4249FCAB7002D3AC1 /* UIView+Shadow.swift in Sources */,
 				7A1E762B249EE015005EB941 /* SessionManagerExtensions.swift in Sources */,
 				7A1E7627249EDE69005EB941 /* BaseRequestAdapter.swift in Sources */,
 				7AE4034F249F40770091EF3B /* Currency.swift in Sources */,
+				7A4402A424A0AC11009FA715 /* ArrayExtensions.swift in Sources */,
 				7A67E14F249F964F00E99CB4 /* ViewModel.swift in Sources */,
 				7A56D994249F479500802F29 /* EncodableExtensions.swift in Sources */,
+				7A5AB2D924A10D8F005619B5 /* SplashViewController+Navigation.swift in Sources */,
 				7A1C4AAC249E91DD00756F7D /* Exchange_App.xcdatamodeld in Sources */,
 				7A1E7630249EE058005EB941 /* ApiError.swift in Sources */,
 				7A1C4AA6249E91DD00756F7D /* ViewController.swift in Sources */,
@@ -582,16 +627,15 @@
 				7A67E14C249F947200E99CB4 /* ExchangeViewModel.swift in Sources */,
 				7AE0CE63249FD9B200743877 /* LineChart.swift in Sources */,
 				7AE4034B249F40130091EF3B /* RatesParam.swift in Sources */,
-				7A44029824A047C8009FA715 /* HomeViewController.swift in Sources */,
 				7A1C4AA2249E91DD00756F7D /* AppDelegate.swift in Sources */,
 				7A67E147249F904700E99CB4 /* Date+CodingKey.swift in Sources */,
+				7A5AB2D724A10CF2005619B5 /* ViewController+Binding.swift in Sources */,
 				7AE0CE8D24A032F700743877 /* RateCardCell.swift in Sources */,
 				7A1E2C9B249FAEFC002D3AC1 /* ReactiveExtensions.swift in Sources */,
 				7A67E14A249F928700E99CB4 /* RatesResponseTypes.swift in Sources */,
 				7A1E762D249EE038005EB941 /* RxAlamofireExtensions.swift in Sources */,
 				7A56D999249F5ECC00802F29 /* CodableExtensions.swift in Sources */,
 				7A56D99E249F647100802F29 /* RatesResponse.swift in Sources */,
-				7A44029A24A047E8009FA715 /* HistoryViewController.swift in Sources */,
 				7A56D99C249F62D800802F29 /* ExchangeRatesApiExtensions.swift in Sources */,
 				7A826653249ED7EE007329B1 /* BaseApi.swift in Sources */,
 				7A1E7629249EDE99005EB941 /* URLPrintProtocol.swift in Sources */,

@@ -10,31 +10,42 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-extension ExchangeViewModel where T == RatesResponseType.DateGrouped {
-    open var chartPoints: Driver<[Currency: [PointEntry]]> {
+class DateGroupedExchangeViewModel: ExchangeViewModel<RatesResponseType.DateGrouped> {
+    private var dateFormat: DateFormatter.Formats = .dateOnly
+
+    public override func getChartPoints() -> Driver<[Currency: [PointEntry]]> {
         content.map { data in
             var result = [Currency: [PointEntry]]()
             data?.rates.forEach { rates in
-                let date = rates.key.stringValue
+                let date = rates.key.convert(to: self.dateFormat)
                 for (key, value) in rates.value {
                     if !result.keys.contains(key) {
                         result[key] = [PointEntry]()
                     }
-                    result[key]?.append(PointEntry(value: value, label: date))
+                    let point = PointEntry(value: value, label: date)
+                    let index = result[key]!.insertionIndexOf(point) { el1, el2 in
+                        if let date1 = el1.label.convert(to: self.dateFormat),
+                            let date2 = el2.label.convert(to: self.dateFormat) {
+                            return date1.compare(date2) == .orderedAscending
+                        } else {
+                            return el1.label < el2.label
+                        }
+                    }
+                    result[key]!.insert(point, at: index)
                 }
             }
             return result
         }
     }
 
-    open var viewModels: Observable<[CurrencyCardViewModel]>? {
-        chartPoints
+    public override func getChildViewModels() -> Observable<[CurrencyCardViewModel]> {
+        getChartPoints()
             .asObservable()
             .map { array in
                 array.map { item -> CurrencyCardViewModel in
-                    let chartPoints = self.chartPoints.asObservable().map({ $0[item.key]! })
+                    let chartPoints = self.getChartPoints().asObservable().map({ $0[item.key]! })
                     return CurrencyCardViewModel(currency: item.key, chartPoints: chartPoints, randomizeTrigger: self.randomizeTrigger)
-                }
+                }.sorted { $0.currency!.rawValue < $1.currency!.rawValue }
             }
     }
 }

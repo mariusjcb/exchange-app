@@ -16,7 +16,21 @@ public enum ExchangeViewModelAction: CaseIterable {
     case fetch
 }
 
-open class ExchangeViewModel<T: Codable>: ViewModel, ActionableViewModel {
+public protocol ExchangeViewModelProtocol: LoadableViewModel {
+    var title: Driver<String?> { get }
+    var lastUpdate: Driver<String?> { get }
+    var randomizeTrigger: PublishSubject<Void> { get }
+    var refreshInterval: BehaviorRelay<Int> { get }
+    var selectedCurrency: BehaviorRelay<Currency> { get }
+    var selectedSymbols: BehaviorRelay<[Currency]?> { get }
+    var timeInterval: BehaviorRelay<(start: Date, end: Date)?> { get }
+    var pausedRefreshing: BehaviorRelay<Bool> { get }
+
+    func getChartPoints() -> Driver<[Currency: [PointEntry]]>
+    func getChildViewModels() -> Observable<[CurrencyCardViewModel]>
+}
+
+open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     public typealias Model = RatesResponse<T>
     public typealias ActionType = ExchangeViewModelAction
 
@@ -25,7 +39,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ActionableViewModel {
 
     // MARK: - Private Streams
 
-    private let loadingStream = BehaviorRelay<Bool>(value: false)
+    private let loadingStream = BehaviorRelay<Bool>(value: true)
     private let contentStream = BehaviorRelay<Model?>(value: nil)
     private let errorStream = BehaviorRelay<Error?>(value: nil)
     private let lastUpdateStream = BehaviorRelay<Date?>(value: nil)
@@ -37,9 +51,17 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ActionableViewModel {
     public let selectedCurrency = BehaviorRelay<Currency>(value: .default)
     public let selectedSymbols = BehaviorRelay<[Currency]?>(value: nil)
     public let timeInterval = BehaviorRelay<(start: Date, end: Date)?>(value: nil)
+    public let pausedRefreshing = BehaviorRelay<Bool>(value: false)
 
-    open var chartPoints: Driver<[Currency: [PointEntry]]>?
-    open var viewModels: Observable<[CurrencyCardViewModel]>?
+    public var title: Driver<String?> {
+        contentStream
+            .flatMap { _ in self.selectedCurrency }
+            .map { self.timeInterval.value == nil ? "Current Rate" : "History for \($0.rawValue)" }
+            .asDriver(onErrorJustReturn: "")
+    }
+
+    public func getChartPoints() -> Driver<[Currency: [PointEntry]]> { .from([]) }
+    public func getChildViewModels() -> Observable<[CurrencyCardViewModel]> { .from([]) }
 
     // MARK: - ViewModel Drivers & Lifecycle
 
@@ -68,6 +90,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ActionableViewModel {
             .flatMap { interval -> Observable<Void> in
                 let timerObservable = Observable<Int>
                     .interval(.seconds(interval - 3), scheduler: MainScheduler.instance)
+                    .filter { _ in !self.pausedRefreshing.value }
                     .takeUntil(self.refreshInterval.skip(1)).asVoid()
                 return Observable.merge(sources + [timerObservable])
                     .throttle(.seconds(MIN_THROTTLE_INTERVAL), latest: false, scheduler: MainScheduler.instance)

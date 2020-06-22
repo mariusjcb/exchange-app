@@ -325,7 +325,7 @@ public class LineChart: UIView {
                 textLayer.alignmentMode = CATextLayerAlignmentMode.center
                 textLayer.contentsScale = UIScreen.main.scale
                 textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
-                textLayer.fontSize = 11
+                textLayer.fontSize = 9
                 textLayer.string = dataEntries[i].label
                 mainLayer.addSublayer(textLayer)
             }

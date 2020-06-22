@@ -8,6 +8,8 @@
 
 import Foundation
 
+public protocol RatesResponseDecodable { }
+
 public struct RatesResponseType {
     public typealias Default = [Currency: Double]
     public typealias DateGrouped = [Date: Default]

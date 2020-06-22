@@ -9,28 +9,24 @@
 import UIKit
 import RxSwift
 
-class BigCurrencyCardCell: UITableViewCell {
+open class BigCurrencyCardCell: UITableViewCell {
+    public static var identifier: String { return "BigCardCellId" }
+
     private var disposeBag = DisposeBag()
     private var viewModel: CurrencyCardViewModel?
 
     @IBOutlet private weak var currencyLabel: UILabel!
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var randomizeButton: UIButton!
+    @IBOutlet private weak var headerImageView: UIImageView! { didSet { setupShadow() } }
     @IBOutlet private weak var chartView: LineChart! {
         didSet {
             self.chartView.dataEntries = []
             self.chartView.isCurved = true
         }
     }
-    @IBOutlet private weak var headerImageView: UIImageView! {
-        didSet {
-            headerImageView.image?.getColors { colors in
-                self.headerView.addShadow(shadowColor: colors?.primary ?? .clear)
-            }
-        }
-    }
 
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         headerView.setLayerFrame()
     }
@@ -38,6 +34,13 @@ class BigCurrencyCardCell: UITableViewCell {
     func config(viewModel: CurrencyCardViewModel) {
         guard viewModel.currency != self.viewModel?.currency else { return }
         disposeBag = DisposeBag()
+
+        viewModel
+            .currencyBackgroundImage
+            .asObservable()
+            .bind(to: headerImageView.rx.image)
+            .disposed(by: disposeBag)
+
         viewModel.content
             .drive(onNext: { model in
                 self.currencyLabel.text = model?.currency.rawValue ?? ""
@@ -47,5 +50,11 @@ class BigCurrencyCardCell: UITableViewCell {
         randomizeButton.rx.tap
             .bind(to: viewModel.randomizeTrigger)
             .disposed(by: disposeBag)
+    }
+
+    private func setupShadow() {
+        headerImageView.image?.getColors { colors in
+            self.headerView.addShadow(shadowColor: colors?.primary ?? .clear)
+        }
     }
 }

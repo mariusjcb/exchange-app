@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// This struct will decode RateResponseTypes.
+/**
+    If type is not recognised will try to decode a primitive one. Anyway, this will rise an error if any type is not found
+ */
 struct RatesResponseTypeDecoder<Key: Hashable, Value: Codable>: Codable where Key: CodingKey {
     let decoded: [Key: Value]
 

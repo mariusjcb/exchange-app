@@ -49,6 +49,10 @@
 		7A67E14A249F928700E99CB4 /* RatesResponseTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */; };
 		7A67E14C249F947200E99CB4 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E14B249F947200E99CB4 /* ExchangeViewModel.swift */; };
 		7A67E14F249F964F00E99CB4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67E14E249F964F00E99CB4 /* ViewModel.swift */; };
+		7A707D3024A20393005BA210 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A707D2F24A20393005BA210 /* AppSettingsTests.swift */; };
+		7A707D3224A20542005BA210 /* ExchangeApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A707D3124A20542005BA210 /* ExchangeApiTests.swift */; };
+		7A707D3924A2070A005BA210 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7A707D3824A2070A005BA210 /* OHHTTPStubsSwift */; };
+		7A707D3C24A207CB005BA210 /* latestRates.json in Sources */ = {isa = PBXBuildFile; fileRef = 7A707D3B24A207CB005BA210 /* latestRates.json */; };
 		7A826653249ED7EE007329B1 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A826652249ED7EE007329B1 /* BaseApi.swift */; };
 		7AE0CE63249FD9B200743877 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE62249FD9B200743877 /* LineChart.swift */; };
 		7AE0CE65249FEAC600743877 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0CE64249FEAC600743877 /* BaseViewController.swift */; };
@@ -139,6 +143,9 @@
 		7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponseTypes.swift; sourceTree = "<group>"; };
 		7A67E14B249F947200E99CB4 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		7A67E14E249F964F00E99CB4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7A707D2F24A20393005BA210 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsTests.swift; sourceTree = "<group>"; };
+		7A707D3124A20542005BA210 /* ExchangeApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeApiTests.swift; sourceTree = "<group>"; };
+		7A707D3B24A207CB005BA210 /* latestRates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = latestRates.json; sourceTree = "<group>"; };
 		7A826652249ED7EE007329B1 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		7AE0CE62249FD9B200743877 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		7AE0CE64249FEAC600743877 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AE40342249F3C640091EF3B /* RxTest in Frameworks */,
+				7A707D3924A2070A005BA210 /* OHHTTPStubsSwift in Frameworks */,
 				7AE40348249F3C640091EF3B /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +241,9 @@
 		7A1C4ABA249E91DF00756F7D /* Exchange AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				7A707D3A24A207A2005BA210 /* MockData */,
+				7A707D2F24A20393005BA210 /* AppSettingsTests.swift */,
+				7A707D3124A20542005BA210 /* ExchangeApiTests.swift */,
 				7A1C4ABB249E91DF00756F7D /* Exchange_AppTests.swift */,
 				7A1C4ABD249E91DF00756F7D /* Info.plist */,
 			);
@@ -395,6 +406,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		7A707D3A24A207A2005BA210 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				7A707D3B24A207CB005BA210 /* latestRates.json */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
 		7A826650249ED7CD007329B1 /* Api Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +553,7 @@
 			packageProductDependencies = (
 				7AE40341249F3C640091EF3B /* RxTest */,
 				7AE40347249F3C640091EF3B /* RxBlocking */,
+				7A707D3824A2070A005BA210 /* OHHTTPStubsSwift */,
 			);
 			productName = "Exchange AppTests";
 			productReference = 7A1C4AB7249E91DF00756F7D /* Exchange AppTests.xctest */;
@@ -595,6 +615,7 @@
 				7AE4033E249F3C640091EF3B /* XCRemoteSwiftPackageReference "RxSwift" */,
 				7A1E2CA0249FC9FF002D3AC1 /* XCRemoteSwiftPackageReference "UIImageColors" */,
 				7AE0CE8724A01BB100743877 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				7A707D3724A2070A005BA210 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
 			);
 			productRefGroup = 7A1C4A9F249E91DD00756F7D /* Products */;
 			projectDirPath = "";
@@ -695,7 +716,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A707D3C24A207CB005BA210 /* latestRates.json in Sources */,
+				7A707D3024A20393005BA210 /* AppSettingsTests.swift in Sources */,
 				7A1C4ABC249E91DF00756F7D /* Exchange_AppTests.swift in Sources */,
+				7A707D3224A20542005BA210 /* ExchangeApiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,6 +1056,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		7A707D3724A2070A005BA210 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		7AE0CE8724A01BB100743877 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
@@ -1071,6 +1103,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7A1E2CA0249FC9FF002D3AC1 /* XCRemoteSwiftPackageReference "UIImageColors" */;
 			productName = UIImageColors;
+		};
+		7A707D3824A2070A005BA210 /* OHHTTPStubsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A707D3724A2070A005BA210 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubsSwift;
 		};
 		7AE0CE8824A01BB100743877 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 
+/// Use it to interogate Rates Api
 open class ExchangeRatesApi: BaseApi {
     let dateFormat = DateFormatter.Formats.dateOnly
 
@@ -23,6 +24,11 @@ open class ExchangeRatesApi: BaseApi {
 
     // MARK: - Requests
 
+    /// A generic method used for all endpoints. *T should be a RatesResponseType member.*
+    /** Use it only with supported types.
+        * T should be a RatesResponseType member.*
+        * This will rise an error if T is not a supported RateType
+     */
     open func requestRates<T>(currency: Currency,
                               symbols: [Currency] = [],
                               from date: Date? = nil,

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// This struct is intended to be used when requesting the Exchange Api. Don't send instances of *RatesParam* to other modules of the app.
 struct RatesParam<Model: StringRawRepresentable>: RequestParamRepresentable, Codable {
     let base: String
     let symbols: String?

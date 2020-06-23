@@ -10,6 +10,7 @@ import Foundation
 import RxAlamofire
 import Alamofire
 
+/// RequestAdapter will handle your path and will append host to it. If you want to add headers or sensitive data like auth tokens you can subclass this request adapter
 open class BaseRequestAdapter: Alamofire.RequestAdapter {
     private let host: String
 

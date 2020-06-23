@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// It doesn't take any effect on production but will help us to know requests and curls right in the console log
 protocol URLPrintProtocol: class {
     static func print(_ response: (HTTPURLResponse, Data))
     static func print(_ request: Alamofire.DataRequest)

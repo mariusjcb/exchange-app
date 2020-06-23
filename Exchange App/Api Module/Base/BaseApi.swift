@@ -11,6 +11,7 @@ import RxSwift
 import RxAlamofire
 import Alamofire
 
+/// Use this class as base for all apis. This will provide you request methods and logic for easy ways to request data.
 open class BaseApi: NSObject {
 
     private let requestAdapter: BaseRequestAdapter

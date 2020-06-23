@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An enum with all supported currencies. Is a CodingKey enum, safe to use with Api Modules
 public enum Currency: String, StringRawRepresentable, CaseIterable, CodingKey {
     case EUR, USD, JPY, BGN, CZK, DKK, GBP, HUF, PLN, RON, SEK, CHF, ISK, NOK, HRK, RUB, TRY, AUD, BRL, CAD, CNY, HKD, IDR, ILS, INR, KRW, MXN, MYR, NZD, PHP, SGD, THB, ZAR
 

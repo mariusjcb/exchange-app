@@ -29,4 +29,13 @@
 * Enable/Disable Auto-Refresh in ecranul History
 * Start/End Date in ecranul Historu
 
-De asemenea, se pot schimba cardurile din ecranul History fara modificari semnificative, din fisierul *AppDefaults.swift*
+De asemenea, se pot schimba cardurile din ecranul History fara modificari semnificative, din fisierul **AppDefaults.swift**
+
+## Progres
+
+* **Documentatie:** Au fost documentate layerele de Data si Networking momentan.
+* **Unit Testing:** Am descoperit o problema in utilizarea unei dependinte in mai multe targeturi cu SPM. 
+
+* *Am scris doua teste, dar, aplicatia fiind bazate pe RxSwift (care trebuie sa fie prezent atat in targetul de build cat si cel de teste), acestea au fost scrise doar ca exemplu.* 
+* *Voi cauta o solutie pentru rezolvarea situatiei. (eventual trecerea catre CocoaPods sau Carthage)*
+

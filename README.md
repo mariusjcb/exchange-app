@@ -2,7 +2,7 @@
 
 ## iOS Examples
 
-![ios1](img/ios1.png "ios1") ![ios2](image2.png "ios2") ![ios2](ios3.png "ios3")
+![ios1](img/ios1.png "ios1") ![ios2](img/ios2.png "ios2") ![ios2](img/ios3.png "ios3")
 
 ## macOS Examples
 

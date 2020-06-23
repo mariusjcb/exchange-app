@@ -13,6 +13,23 @@ import RxCocoa
 class DateGroupedExchangeViewModel: ExchangeViewModel<RatesResponseType.DateGrouped> {
     private var dateFormat: DateFormatter.Formats = .dateOnly
 
+    override func setupInputBinding(for source: BehaviorRelay<AppSettings>) {
+        super.setupInputBinding(for: source)
+
+        Observable.combineLatest(source.map { $0.historyStartDate }, timeInterval)
+            .map { (start: $0.0, end: $0.1?.end ?? Date()) }
+            .bind(to: self.timeInterval).disposed(by: disposeBag)
+
+        Observable.combineLatest(source.map { $0.historyEndDate }, timeInterval)
+            .map { (start: $0.0!, end: $0.1?.end ?? Date()) }
+            .bind(to: self.timeInterval).disposed(by: disposeBag)
+
+        source.map { $0.autorefreshHistory }
+            .filter { _ in self.timeInterval.value?.end != nil }
+            .subscribe(onNext: { self.pausedRefreshing.accept($0) })
+            .disposed(by: disposeBag)
+    }
+
     public override func getChartPoints() -> Driver<[Currency: [PointEntry]]> {
         content.map { data in
             var result = [Currency: [PointEntry]]()

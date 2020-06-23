@@ -14,14 +14,11 @@ open class CurrencyCardViewModel: ViewModel {
     public typealias Model = (currency: Currency, entries: [PointEntry], rate: Double?)
     private var disposeBag = DisposeBag()
 
-    private static var DefaultFlag = "flag-placeholder"
-    private static var DefaultBG = "EUR_BG"
-
     // MARK: - Streams
 
     private let contentStream = BehaviorRelay<Model?>(value: nil)
-    private let currencyImageStream = BehaviorRelay<UIImage>(value: UIImage(named: DefaultFlag)!)
-    private let currencyBackgroundImageStream = BehaviorRelay<UIImage>(value: UIImage(named: DefaultBG)!)
+    private let currencyImageStream = BehaviorRelay<UIImage>(value: UIImage(named: AppDefaults.DefaultFlag)!)
+    private let currencyBackgroundImageStream = BehaviorRelay<UIImage>(value: UIImage(named: AppDefaults.DefaultFlagBG)!)
     public let randomizeTrigger: PublishSubject<Void>
 
     public var currencyImage: Driver<UIImage> { currencyImageStream.asDriver() }
@@ -41,14 +38,14 @@ open class CurrencyCardViewModel: ViewModel {
             .disposed(by: disposeBag)
 
         contentStream
-            .map { UIImage(named: $0?.currency.rawValue.lowercased() ?? CurrencyCardViewModel.DefaultFlag) }
-            .map { $0 == nil ? UIImage(named: CurrencyCardViewModel.DefaultFlag)! : $0! }
+            .map { UIImage(named: $0?.currency.rawValue.lowercased() ?? AppDefaults.DefaultFlag) }
+            .map { $0 == nil ? UIImage(named: AppDefaults.DefaultFlag)! : $0! }
             .bind(to: currencyImageStream)
             .disposed(by: disposeBag)
 
         contentStream
             .map { UIImage(named: ($0?.currency.rawValue.uppercased() ?? "") + "_BG") ?? UIImage(named: $0?.currency.rawValue.lowercased() ?? "") }
-            .map { $0 == nil ? UIImage(named: CurrencyCardViewModel.DefaultBG)! : $0! }
+            .map { $0 == nil ? UIImage(named: AppDefaults.DefaultFlagBG)! : $0! }
             .bind(to: currencyBackgroundImageStream)
             .disposed(by: disposeBag)
     }

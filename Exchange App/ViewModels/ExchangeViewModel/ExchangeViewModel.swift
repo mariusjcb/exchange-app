@@ -10,8 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private let MIN_THROTTLE_INTERVAL = 3
-
 public enum ExchangeViewModelAction: CaseIterable {
     case fetch
 }
@@ -34,7 +32,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     public typealias Model = RatesResponse<T>
     public typealias ActionType = ExchangeViewModelAction
 
-    private var disposeBag = DisposeBag()
+    internal var disposeBag = DisposeBag()
     private let exchangeRatesApi: ExchangeRatesApi
 
     // MARK: - Private Streams
@@ -47,7 +45,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     // MARK: - Public Streams
 
     public let randomizeTrigger = PublishSubject<Void>()
-    public let refreshInterval = BehaviorRelay<Int>(value: 3)
+    public let refreshInterval = BehaviorRelay<Int>(value: AppDefaults.DefaultRefreshRate)
     public let selectedCurrency = BehaviorRelay<Currency>(value: .default)
     public let selectedSymbols = BehaviorRelay<[Currency]?>(value: nil)
     public let timeInterval = BehaviorRelay<(start: Date, end: Date)?>(value: nil)
@@ -74,31 +72,38 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
             .asDriver(onErrorJustReturn: "NaN")
     }
 
-    init(refreshTrigger: Observable<Void>, exchangeRatesApi: ExchangeRatesApi) {
+    init(refreshTrigger: Observable<Void>, exchangeRatesApi: ExchangeRatesApi, source: BehaviorRelay<AppSettings>) {
         self.exchangeRatesApi = exchangeRatesApi
 
-        setupBinding(refreshOn: [refreshTrigger,
+        setupOutputBinding(refreshOn: [refreshTrigger,
                                  selectedCurrency.asVoid(),
                                  selectedSymbols.asVoid(skip: 1),
                                  timeInterval.asVoid(skip: 1)])
+        setupInputBinding(for: source)
     }
 
     // MARK: - Setup Binding
 
-    private func setupBinding(refreshOn sources: [Observable<Void>]) {
+    internal func setupInputBinding(for source: BehaviorRelay<AppSettings>) {
+        source.map { $0.refreshRate }.bind(to: refreshInterval).disposed(by: disposeBag)
+        source.map { $0.defaultCurrency }.bind(to: selectedCurrency).disposed(by: disposeBag)
+        source.map { $0.refreshRate }.bind(to: refreshInterval).disposed(by: disposeBag)
+    }
+
+    private func setupOutputBinding(refreshOn sources: [Observable<Void>]) {
         refreshInterval
             .flatMap { interval -> Observable<Void> in
                 let timerObservable = Observable<Int>
-                    .interval(.seconds(interval - 3), scheduler: MainScheduler.instance)
+                    .interval(.seconds(interval - AppDefaults.MIN_THROTTLE_INTERVAL), scheduler: MainScheduler.instance)
                     .filter { _ in !self.pausedRefreshing.value }
                     .takeUntil(self.refreshInterval.skip(1)).asVoid()
                 return Observable.merge(sources + [timerObservable])
-                    .throttle(.seconds(MIN_THROTTLE_INTERVAL), latest: false, scheduler: MainScheduler.instance)
+                    .throttle(.seconds(AppDefaults.MIN_THROTTLE_INTERVAL), latest: false, scheduler: MainScheduler.instance)
         }.subscribe(onNext: { _ in self.dispatch(.fetch) })
         .disposed(by: disposeBag)
 
         randomizeTrigger
-            .map { _ in Currency.allCases.randomElement()! }
+            .map { _ in AppDefaults.SupportedCurrencies.randomElement()! }
             .bind(to: selectedCurrency)
             .disposed(by: disposeBag)
     }
@@ -129,7 +134,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
 
     private func loadNewData() {
         self.loadingStream.accept(true)
-        Observable.zip(self.selectedCurrency, self.selectedSymbols, self.timeInterval)
+        Observable.combineLatest(self.selectedCurrency, self.selectedSymbols, self.timeInterval)
             .flatMap { (currency, symbols, timeInterval) in
                 self.exchangeRatesApi
                     .requestRates(currency: currency, symbols: symbols ?? [], from: timeInterval?.0, until: timeInterval?.1)

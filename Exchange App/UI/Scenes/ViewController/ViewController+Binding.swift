@@ -43,8 +43,9 @@ extension ViewController {
                 }
             }.disposed(by: disposeBag)
 
-        Observable.zip(viewModel!.loading.asObservable(),
-                       viewModel.getChildViewModels().map { $0.isEmpty })
+        Observable
+            .combineLatest(viewModel!.loading.asObservable(),
+                           viewModel.getChildViewModels().map { $0.isEmpty })
             .map { !$0 && $1 ? 1 : 0 }
             .bind(to: notFoundView.rx.alpha)
             .disposed(by: disposeBag)

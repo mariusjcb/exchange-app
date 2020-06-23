@@ -34,6 +34,13 @@
 		7A56D999249F5ECC00802F29 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D998249F5ECC00802F29 /* CodableExtensions.swift */; };
 		7A56D99C249F62D800802F29 /* ExchangeRatesApiExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D99B249F62D800802F29 /* ExchangeRatesApiExtensions.swift */; };
 		7A56D99E249F647100802F29 /* RatesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56D99D249F647100802F29 /* RatesResponse.swift */; };
+		7A59D22824A163EC004A8D6F /* AppSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D22724A163EC004A8D6F /* AppSettingsViewModel.swift */; };
+		7A59D22D24A16CD5004A8D6F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D22C24A16CD5004A8D6F /* AppSettings.swift */; };
+		7A59D22F24A16DA5004A8D6F /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D22E24A16DA5004A8D6F /* AppDefaults.swift */; };
+		7A59D23324A17DEE004A8D6F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D23224A17DEE004A8D6F /* SettingsViewController.swift */; };
+		7A59D23624A18260004A8D6F /* ViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D23524A18260004A8D6F /* ViewController+Navigation.swift */; };
+		7A59D23824A1A793004A8D6F /* SettingsViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D23724A1A793004A8D6F /* SettingsViewController+Navigation.swift */; };
+		7A59D23A24A1A868004A8D6F /* ExchangeApiRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59D23924A1A868004A8D6F /* ExchangeApiRequestAdapter.swift */; };
 		7A5AB2D324A10C5F005619B5 /* SplashViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5AB2D224A10C5F005619B5 /* SplashViewController+Layout.swift */; };
 		7A5AB2D724A10CF2005619B5 /* ViewController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5AB2D624A10CF2005619B5 /* ViewController+Binding.swift */; };
 		7A5AB2D924A10D8F005619B5 /* SplashViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5AB2D824A10D8F005619B5 /* SplashViewController+Navigation.swift */; };
@@ -117,6 +124,13 @@
 		7A56D998249F5ECC00802F29 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		7A56D99B249F62D800802F29 /* ExchangeRatesApiExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesApiExtensions.swift; sourceTree = "<group>"; };
 		7A56D99D249F647100802F29 /* RatesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesResponse.swift; sourceTree = "<group>"; };
+		7A59D22724A163EC004A8D6F /* AppSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewModel.swift; sourceTree = "<group>"; };
+		7A59D22C24A16CD5004A8D6F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		7A59D22E24A16DA5004A8D6F /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
+		7A59D23224A17DEE004A8D6F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7A59D23524A18260004A8D6F /* ViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Navigation.swift"; sourceTree = "<group>"; };
+		7A59D23724A1A793004A8D6F /* SettingsViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Navigation.swift"; sourceTree = "<group>"; };
+		7A59D23924A1A868004A8D6F /* ExchangeApiRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeApiRequestAdapter.swift; sourceTree = "<group>"; };
 		7A5AB2D224A10C5F005619B5 /* SplashViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashViewController+Layout.swift"; sourceTree = "<group>"; };
 		7A5AB2D624A10CF2005619B5 /* ViewController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Binding.swift"; sourceTree = "<group>"; };
 		7A5AB2D824A10D8F005619B5 /* SplashViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashViewController+Navigation.swift"; sourceTree = "<group>"; };
@@ -199,6 +213,7 @@
 		7A1C4AA0249E91DD00756F7D /* Exchange App */ = {
 			isa = PBXGroup;
 			children = (
+				7A59D22B24A16CBA004A8D6F /* Models */,
 				7A56D991249F478300802F29 /* Common */,
 				7A826650249ED7CD007329B1 /* Api Module */,
 				7A67E148249F90AB00E99CB4 /* ViewModels */,
@@ -281,8 +296,9 @@
 		7A56D991249F478300802F29 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				7A56D995249F47A300802F29 /* Errors */,
 				7A56D992249F478B00802F29 /* Extensions */,
+				7A56D995249F47A300802F29 /* Errors */,
+				7A59D22E24A16DA5004A8D6F /* AppDefaults.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -312,8 +328,29 @@
 			children = (
 				7A1E7632249EE0A5005EB941 /* ExchangeRatesApi.swift */,
 				7A56D99B249F62D800802F29 /* ExchangeRatesApiExtensions.swift */,
+				7A59D23924A1A868004A8D6F /* ExchangeApiRequestAdapter.swift */,
 			);
 			path = ExchangeRatesApi;
+			sourceTree = "<group>";
+		};
+		7A59D22B24A16CBA004A8D6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7AE4034E249F40770091EF3B /* Currency.swift */,
+				7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */,
+				7A56D99D249F647100802F29 /* RatesResponse.swift */,
+				7A59D22C24A16CD5004A8D6F /* AppSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7A59D23124A17DDC004A8D6F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7A59D23224A17DEE004A8D6F /* SettingsViewController.swift */,
+				7A59D23724A1A793004A8D6F /* SettingsViewController+Navigation.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		7A5AB2D424A10CC5005619B5 /* SplashViewController */ = {
@@ -331,6 +368,7 @@
 			children = (
 				7A1C4AA5249E91DD00756F7D /* ViewController.swift */,
 				7A5AB2D624A10CF2005619B5 /* ViewController+Binding.swift */,
+				7A59D23524A18260004A8D6F /* ViewController+Navigation.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -341,6 +379,7 @@
 				7A44029524A047A9009FA715 /* Base */,
 				7A5AB2D524A10CE2005619B5 /* ViewController */,
 				7A5AB2D424A10CC5005619B5 /* SplashViewController */,
+				7A59D23124A17DDC004A8D6F /* Settings */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -351,6 +390,7 @@
 				7AE0CE8F24A041B700743877 /* Base */,
 				7AE0CE8E24A041AB00743877 /* ExchangeViewModel */,
 				7AE0CE8524A0138500743877 /* CurrencyCardViewModel.swift */,
+				7A59D22724A163EC004A8D6F /* AppSettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -426,10 +466,7 @@
 		7AE40349249F3FDA0091EF3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7AE4034E249F40770091EF3B /* Currency.swift */,
-				7A67E149249F928700E99CB4 /* RatesResponseTypes.swift */,
 				7AE4034A249F40130091EF3B /* RatesParam.swift */,
-				7A56D99D249F647100802F29 /* RatesResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -605,6 +642,7 @@
 				7AE0CE9424A0420E00743877 /* ExchangeViewModel+DateGroupedRates.swift in Sources */,
 				7A67E145249F847A00E99CB4 /* RatesResponseTypeDecoder.swift in Sources */,
 				7AE0CE9124A041D400743877 /* ExchangeViewModel+DefaultRates.swift in Sources */,
+				7A59D23624A18260004A8D6F /* ViewController+Navigation.swift in Sources */,
 				7A5AB2D324A10C5F005619B5 /* SplashViewController+Layout.swift in Sources */,
 				7A4402A224A0947F009FA715 /* AnimatedImageView.swift in Sources */,
 				7AE0CE76249FF3AA00743877 /* SplashViewController.swift in Sources */,
@@ -613,12 +651,17 @@
 				7A1E7636249EE492005EB941 /* DateFormatters.swift in Sources */,
 				7AE0CE65249FEAC600743877 /* BaseViewController.swift in Sources */,
 				7A1E2CA4249FCAB7002D3AC1 /* UIView+Shadow.swift in Sources */,
+				7A59D22F24A16DA5004A8D6F /* AppDefaults.swift in Sources */,
 				7A1E762B249EE015005EB941 /* SessionManagerExtensions.swift in Sources */,
 				7A1E7627249EDE69005EB941 /* BaseRequestAdapter.swift in Sources */,
 				7AE4034F249F40770091EF3B /* Currency.swift in Sources */,
+				7A59D23324A17DEE004A8D6F /* SettingsViewController.swift in Sources */,
 				7A4402A424A0AC11009FA715 /* ArrayExtensions.swift in Sources */,
+				7A59D22824A163EC004A8D6F /* AppSettingsViewModel.swift in Sources */,
+				7A59D23A24A1A868004A8D6F /* ExchangeApiRequestAdapter.swift in Sources */,
 				7A67E14F249F964F00E99CB4 /* ViewModel.swift in Sources */,
 				7A56D994249F479500802F29 /* EncodableExtensions.swift in Sources */,
+				7A59D22D24A16CD5004A8D6F /* AppSettings.swift in Sources */,
 				7A5AB2D924A10D8F005619B5 /* SplashViewController+Navigation.swift in Sources */,
 				7A1C4AAC249E91DD00756F7D /* Exchange_App.xcdatamodeld in Sources */,
 				7A1E7630249EE058005EB941 /* ApiError.swift in Sources */,
@@ -642,6 +685,7 @@
 				7AE4032B249EEAE30091EF3B /* DataExtensions.swift in Sources */,
 				7AE0CE7924A008F600743877 /* BigCurrencyCardCell.swift in Sources */,
 				7A1C4AA4249E91DD00756F7D /* SceneDelegate.swift in Sources */,
+				7A59D23824A1A793004A8D6F /* SettingsViewController+Navigation.swift in Sources */,
 				7A1E7633249EE0A5005EB941 /* ExchangeRatesApi.swift in Sources */,
 				7A1E2C9E249FC92A002D3AC1 /* UIImage+AverageColor.swift in Sources */,
 			);
@@ -820,7 +864,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2S2RSVRNML;
 				INFOPLIST_FILE = "Exchange App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -841,7 +885,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2S2RSVRNML;
 				INFOPLIST_FILE = "Exchange App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

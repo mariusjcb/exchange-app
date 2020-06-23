@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import UIImageColors
-import Charts
 
 class BaseViewController: UIViewController {
     

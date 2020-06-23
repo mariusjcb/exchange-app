@@ -7,8 +7,8 @@
 
 ## macOS Examples
 
-| ![mac1](img/mac1.png "ios1") | ![mac2](img/mac2.png "mac2") | ![mac3](img/mac3.png "mac3") |
-|:---:|:---:|:---:|
+| ![mac1](img/mac1.png "ios1") | ![mac2](img/mac2.png "mac2") |
+|:---:|:---:|
 
 ## Compatibility
 * iOS 13.0+ ( deoarece folosesc IBSegueAction pentru DI )

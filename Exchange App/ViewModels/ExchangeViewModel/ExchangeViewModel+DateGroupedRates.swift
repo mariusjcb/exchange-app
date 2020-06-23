@@ -16,16 +16,14 @@ class DateGroupedExchangeViewModel: ExchangeViewModel<RatesResponseType.DateGrou
     override func setupInputBinding(for source: BehaviorRelay<AppSettings>) {
         super.setupInputBinding(for: source)
 
-        Observable.combineLatest(source.map { $0.historyStartDate }, timeInterval)
-            .map { (start: $0.0, end: $0.1?.end ?? Date()) }
-            .bind(to: self.timeInterval).disposed(by: disposeBag)
-
-        Observable.combineLatest(source.map { $0.historyEndDate }, timeInterval)
-            .map { (start: $0.0!, end: $0.1?.end ?? Date()) }
-            .bind(to: self.timeInterval).disposed(by: disposeBag)
+        source.subscribe(onNext: { appSetings in
+            self.selectedSymbols.accept(appSetings.selectedHistorySymbols)
+            self.timeInterval.accept((start: appSetings.historyStartDate,
+                                      end: appSetings.historyEndDate ?? Date()))
+        }).disposed(by: disposeBag)
 
         source.map { $0.autorefreshHistory }
-            .filter { _ in self.timeInterval.value?.end != nil }
+            .map { self.timeInterval.value?.start != nil && !$0 }
             .subscribe(onNext: { self.pausedRefreshing.accept($0) })
             .disposed(by: disposeBag)
     }

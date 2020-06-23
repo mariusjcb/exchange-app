@@ -72,7 +72,7 @@ open class AppSettingsViewModel: ViewModel {
                            autoRefreshHistory,
                            timeIntervalStartDate,
                            timeIntervalEndDate)
-            .map { AppSettings($0, $1, $2, $3, $4) }
+            .map { AppSettings($0, $1, $2, $3, $4, AppDefaults.HistorySelectedCurrencies) }
             .filter { source.value != $0 }
             .bind(to: source)
             .disposed(by: disposeBag)

@@ -17,10 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let disposeBag = DisposeBag()
     var window: UIWindow?
 
+    var mainShadowColor: UIColor?
     let exchangeApiRequestsAdapter = ExchangeApiRequestAdapter(env: .prod)
-    let appSettingsSource = BehaviorRelay<AppSettings>(value: AppDefaults.DefaultAppSettings)
+    var appSettingsSource: BehaviorRelay<AppSettings>!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UIImage(named: AppDefaults.DefaultFlagBG)?.getColors { colors in self.mainShadowColor = colors?.primary }
+        loadSettingsFromStorage()
+        setupSaveSettingsBinder()
+
         return true
     }
 
@@ -36,18 +41,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
+
+    private func loadSettingsFromStorage() {
+        if let appSettingsJson = UserDefaults.standard.object(forKey: "AppSettings") as? Data {
+            let decoder = JSONDecoder()
+            if let appSettings = try? decoder.decode(AppSettings.self, from: appSettingsJson) {
+                appSettingsSource = .init(value: appSettings)
+            } else {
+                appSettingsSource = .init(value: AppDefaults.DefaultAppSettings)
+            }
+        } else {
+            appSettingsSource = .init(value: AppDefaults.DefaultAppSettings)
+        }
+    }
+
+    private func setupSaveSettingsBinder() {
+        appSettingsSource
+            .subscribe(onNext: { appSettings in
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(appSettings) {
+                    UserDefaults.standard.set(encoded, forKey: "AppSettings")
+                }
+            }).disposed(by: disposeBag)
+    }
 }
 
 extension UIApplication {
     var appDelegate: AppDelegate { delegate as! AppDelegate }
 
-    var exchangeApiRequestsAdapter: ExchangeApiRequestAdapter {
-        return appDelegate.exchangeApiRequestsAdapter
-    }
+    var mainShadowColor: UIColor? { appDelegate.mainShadowColor }
+    var exchangeApiRequestsAdapter: ExchangeApiRequestAdapter { appDelegate.exchangeApiRequestsAdapter }
 
-    var settingsSource: BehaviorRelay<AppSettings> {
-        return appDelegate.appSettingsSource
-    }
-
+    var settingsSource: BehaviorRelay<AppSettings> { appDelegate.appSettingsSource }
     var settings: AppSettings { settingsSource.value }
 }

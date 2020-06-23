@@ -38,4 +38,8 @@ class SettingsViewController: UITableViewController {
         setupInputBinders()
         setupOutputBinders()
     }
+
+    @IBAction func dismiss() {
+        self.dismiss(animated: true)
+    }
 }

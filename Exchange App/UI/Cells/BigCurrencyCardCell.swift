@@ -18,12 +18,17 @@ open class BigCurrencyCardCell: UITableViewCell {
     @IBOutlet private weak var currencyLabel: UILabel!
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var randomizeButton: UIButton!
-    @IBOutlet private weak var headerImageView: UIImageView! { didSet { setupShadow() } }
+    @IBOutlet private weak var headerImageView: UIImageView!
     @IBOutlet private weak var chartView: LineChart! {
         didSet {
             self.chartView.dataEntries = []
             self.chartView.isCurved = true
         }
+    }
+
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        self.headerView.addShadow(shadowColor: UIApplication.shared.mainShadowColor ?? .clear)
     }
 
     open override func layoutSubviews() {
@@ -50,11 +55,5 @@ open class BigCurrencyCardCell: UITableViewCell {
         randomizeButton.rx.tap
             .bind(to: viewModel.randomizeTrigger)
             .disposed(by: disposeBag)
-    }
-
-    private func setupShadow() {
-        headerImageView.image?.getColors { colors in
-            self.headerView.addShadow(shadowColor: colors?.primary ?? .clear)
-        }
     }
 }

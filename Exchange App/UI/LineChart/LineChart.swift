@@ -58,6 +58,7 @@ public class CurveAlgorithm {
      Create a curved bezier path that connects all points in the dataset
      */
     func createCurvedPath(_ dataPoints: [CGPoint]) -> UIBezierPath? {
+        guard !dataPoints.isEmpty, !dataPoints.contains(where: { $0.x == .nan || $0.y == .nan}) else { return nil }
         let path = UIBezierPath()
         path.move(to: dataPoints[0])
 
@@ -194,12 +195,12 @@ public class LineChart: UIView {
 
     public override func layoutSubviews() {
         scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
-        if let dataEntries = dataEntries {
+        if let dataEntries = dataEntries, let dataPoints = convertDataEntriesToPoints(entries: dataEntries) {
+            self.dataPoints = dataPoints
             scrollView.contentSize = CGSize(width: CGFloat(dataEntries.count) * lineGap, height: self.frame.size.height)
             mainLayer.frame = CGRect(x: 0, y: 0, width: CGFloat(dataEntries.count) * lineGap, height: self.frame.size.height)
             dataLayer.frame = CGRect(x: 0, y: topSpace, width: mainLayer.frame.width, height: mainLayer.frame.height - topSpace - bottomSpace)
             gradientLayer.frame = dataLayer.frame
-            dataPoints = convertDataEntriesToPoints(entries: dataEntries)
             gridLayer.frame = CGRect(x: 0, y: topSpace, width: self.frame.width, height: mainLayer.frame.height - topSpace - bottomSpace)
             if showDots { drawDots() }
             clean()
@@ -217,7 +218,7 @@ public class LineChart: UIView {
     /**
      Convert an array of PointEntry to an array of CGPoint on dataLayer coordinate system
      */
-    private func convertDataEntriesToPoints(entries: [PointEntry]) -> [CGPoint] {
+    private func convertDataEntriesToPoints(entries: [PointEntry]) -> [CGPoint]? {
         if let max = entries.max()?.value,
             let min = entries.min()?.value {
 
@@ -225,8 +226,12 @@ public class LineChart: UIView {
             let minMaxRange: CGFloat = CGFloat(max - min) * topHorizontalLine
 
             for i in 0..<entries.count {
-                let height = dataLayer.frame.height * (1 - ((CGFloat(entries[i].value) - CGFloat(min)) / minMaxRange))
+                let minMax = minMaxRange == 0 ? 1 : minMaxRange
+                let height = dataLayer.frame.height * (1 - ((CGFloat(entries[i].value) - CGFloat(min)) / minMax))
                 let point = CGPoint(x: CGFloat(i)*lineGap, y: height)
+                if point.y == .nan {
+                    return nil
+                }
                 result.append(point)
             }
             return result
@@ -239,6 +244,7 @@ public class LineChart: UIView {
      */
     private func drawChart() {
         if let dataPoints = dataPoints,
+            !dataPoints.contains(where: { $0.x == .nan || $0.y == .nan}),
             dataPoints.count > 0,
             let path = createPath() {
 
@@ -254,7 +260,7 @@ public class LineChart: UIView {
      Create a zigzag bezier path that connects all points in dataPoints
      */
     private func createPath() -> UIBezierPath? {
-        guard let dataPoints = dataPoints, dataPoints.count > 0 else {
+        guard let dataPoints = dataPoints, dataPoints.count > 0, !dataPoints.contains(where: { $0.x == .nan || $0.y == .nan}) else {
             return nil
         }
         let path = UIBezierPath()
@@ -270,7 +276,7 @@ public class LineChart: UIView {
      Draw a curved line connecting all points in dataPoints
      */
     private func drawCurvedChart() {
-        guard let dataPoints = dataPoints, dataPoints.count > 0 else {
+        guard let dataPoints = dataPoints, dataPoints.count > 0, !dataPoints.contains(where: { $0.x == .nan || $0.y == .nan}) else {
             return
         }
         if let path = CurveAlgorithm.shared.createCurvedPath(dataPoints) {
@@ -287,7 +293,7 @@ public class LineChart: UIView {
      */
     private func maskGradientLayer() {
         if let dataPoints = dataPoints,
-            dataPoints.count > 0 {
+            dataPoints.count > 0, !dataPoints.contains(where: { $0.x == .nan || $0.y == .nan}) {
 
             let path = UIBezierPath()
             path.move(to: CGPoint(x: dataPoints[0].x, y: dataLayer.frame.height))
@@ -413,7 +419,7 @@ public class LineChart: UIView {
      */
     private func drawDots() {
         var dotLayers: [DotCALayer] = []
-        if let dataPoints = dataPoints {
+        if let dataPoints = dataPoints, !dataPoints.contains(where: { $0.x == .nan || $0.y == .nan}) {
             for dataPoint in dataPoints {
                 let xValue = dataPoint.x - outerRadius/2
                 let yValue = (dataPoint.y + lineGap) - (outerRadius * 2)

@@ -17,7 +17,6 @@ public struct AppDefaults {
     public static var SupportedCurrencies: [Currency] { Currency.allCases }
 
     public static let HistorySelectedCurrencies: [Currency] = [.RON, .USD, .BGN]
-    public static let AutorefreshHistory: Bool = false
     public static var DefaultStartDate: Date { Date().addingTimeInterval(-10 * 24 * 60 * 60) }
 
     public static let DefaultFlag = "flag-placeholder"
@@ -26,6 +25,6 @@ public struct AppDefaults {
     public static let MIN_THROTTLE_INTERVAL = DefaultRefreshRate
 
     public static var DefaultAppSettings: AppSettings {
-        AppSettings(DefaultCurrency, DefaultRefreshRate, AutorefreshHistory, DefaultStartDate, nil)
+        AppSettings(DefaultCurrency, DefaultRefreshRate, true, DefaultStartDate, nil, AppDefaults.HistorySelectedCurrencies)
     }
 }

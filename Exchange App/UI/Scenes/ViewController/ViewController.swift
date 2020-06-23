@@ -47,13 +47,17 @@ class ViewController: BaseViewController, UITableViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewModel.pausedRefreshing.accept(false)
+        if viewModel.isHistoryViewModel {
+            self.viewModel.pausedRefreshing.accept(false)
+        }
         refreshTrigger.onNext(())
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.viewModel.pausedRefreshing.accept(true)
+        if viewModel.isHistoryViewModel {
+            self.viewModel.pausedRefreshing.accept(true)
+        }
     }
 
     // MARK: - Actions

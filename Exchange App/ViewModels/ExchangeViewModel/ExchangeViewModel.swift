@@ -24,6 +24,8 @@ public protocol ExchangeViewModelProtocol: LoadableViewModel {
     var timeInterval: BehaviorRelay<(start: Date, end: Date)?> { get }
     var pausedRefreshing: BehaviorRelay<Bool> { get }
 
+    var isHistoryViewModel: Bool { get }
+
     func getChartPoints() -> Driver<[Currency: [PointEntry]]>
     func getChildViewModels() -> Observable<[CurrencyCardViewModel]>
 }
@@ -50,6 +52,8 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     public let selectedSymbols = BehaviorRelay<[Currency]?>(value: nil)
     public let timeInterval = BehaviorRelay<(start: Date, end: Date)?>(value: nil)
     public let pausedRefreshing = BehaviorRelay<Bool>(value: false)
+
+    public var isHistoryViewModel: Bool { timeInterval.value != nil }
 
     public var title: Driver<String?> {
         contentStream

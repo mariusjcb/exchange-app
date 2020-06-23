@@ -28,7 +28,8 @@ extension ViewController {
 
     internal func setupTableView() {
         viewModel
-            .getChildViewModels()
+            .viewModels
+            .asObservable()
             .bind(to: tableView.rx.items) { (tableView, row, viewModel) -> UITableViewCell in
                 if viewModel.isSmallCard {
                     let cell = tableView.dequeueReusableCell(withIdentifier: RateCardCell.identifier,
@@ -45,10 +46,16 @@ extension ViewController {
 
         Observable
             .combineLatest(viewModel!.loading.asObservable(),
-                           viewModel.getChildViewModels().map { $0.isEmpty })
+                           viewModel.viewModels.asObservable().map { $0.isEmpty })
             .map { !$0 && $1 ? 1 : 0 }
             .bind(to: notFoundView.rx.alpha)
             .disposed(by: disposeBag)
+
+        viewModel
+            .isStarted
+            .drive(onNext: { isStarted in
+                UIApplication.shared.setLoader(!isStarted)
+            }).disposed(by: disposeBag)
     }
 
     private func setupLastUpdateBinding() {

@@ -28,7 +28,7 @@ open class BigCurrencyCardCell: UITableViewCell {
 
     open override func awakeFromNib() {
         super.awakeFromNib()
-        self.headerView.addShadow(shadowColor: UIApplication.shared.mainShadowColor ?? .clear)
+        self.headerView.addShadow(shadowColor: UIApplication.shared.mainSadowColor ?? .clear)
     }
 
     open override func layoutSubviews() {

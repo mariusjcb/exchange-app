@@ -26,11 +26,11 @@ public protocol ExchangeViewModelProtocol: LoadableViewModel {
 
     var isHistoryViewModel: Bool { get }
 
-    func getChartPoints() -> Driver<[Currency: [PointEntry]]>
-    func getChildViewModels() -> Observable<[CurrencyCardViewModel]>
+    var chartPoints: Driver<[Currency: [PointEntry]]> { get }
+    var viewModels: Driver<[CurrencyCardViewModel]> { get }
 }
 
-open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
+open class ExchangeViewModel<T: Codable & Equatable>: ViewModel, ExchangeViewModelProtocol {
     public typealias Model = RatesResponse<T>
     public typealias ActionType = ExchangeViewModelAction
 
@@ -39,10 +39,14 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
 
     // MARK: - Private Streams
 
+    private let isStartedStream = BehaviorRelay<Bool>(value: false)
     private let loadingStream = BehaviorRelay<Bool>(value: true)
     private let contentStream = BehaviorRelay<Model?>(value: nil)
     private let errorStream = BehaviorRelay<Error?>(value: nil)
     private let lastUpdateStream = BehaviorRelay<Date?>(value: nil)
+
+    internal let chartPointsStream = BehaviorRelay<[Currency: [PointEntry]]>(value: [:])
+    internal let viewModelsStream = BehaviorRelay<[CurrencyCardViewModel]>(value: [])
 
     // MARK: - Public Streams
 
@@ -52,6 +56,8 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     public let selectedSymbols = BehaviorRelay<[Currency]?>(value: nil)
     public let timeInterval = BehaviorRelay<(start: Date, end: Date)?>(value: nil)
     public let pausedRefreshing = BehaviorRelay<Bool>(value: false)
+    public var chartPoints: Driver<[Currency: [PointEntry]]> { chartPointsStream.asDriver() }
+    public var viewModels: Driver<[CurrencyCardViewModel]> { viewModelsStream.asDriver() }
 
     public var isHistoryViewModel: Bool { timeInterval.value != nil }
 
@@ -67,6 +73,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
 
     // MARK: - ViewModel Drivers & Lifecycle
 
+    open var isStarted: Driver<Bool> { isStartedStream.asDriver() }
     open var loading: Driver<Bool> { loadingStream.asDriver() }
     open var content: Driver<Model?> { contentStream.asDriver() }
     open var error: Driver<Error?> { errorStream.asDriver() }
@@ -80,9 +87,9 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
         self.exchangeRatesApi = exchangeRatesApi
 
         setupOutputBinding(refreshOn: [refreshTrigger,
-                                 selectedCurrency.asVoid(),
-                                 selectedSymbols.asVoid(skip: 1),
-                                 timeInterval.asVoid(skip: 1)])
+                                       selectedCurrency.asVoid(),
+                                       selectedSymbols.asVoid(skip: 1),
+                                       timeInterval.asVoid(skip: 1)])
         setupInputBinding(for: source)
     }
 
@@ -95,6 +102,12 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     }
 
     private func setupOutputBinding(refreshOn sources: [Observable<Void>]) {
+        Observable
+            .merge(sources)
+            .map { false }
+            .bind(to: isStartedStream)
+            .disposed(by: disposeBag)
+        
         refreshInterval
             .flatMap { interval -> Observable<Void> in
                 let timerObservable = Observable<Int>
@@ -121,6 +134,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     }
 
     public func accept(model: RatesResponse<T>) {
+        self.isStartedStream.accept(true)
         self.loadingStream.accept(false)
         self.contentStream.accept(model)
         self.errorStream.accept(nil)
@@ -128,6 +142,7 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
     }
 
     public func reject(error: Error) {
+        self.isStartedStream.accept(true)
         self.loadingStream.accept(false)
         self.contentStream.accept(nil)
         self.errorStream.accept(error)
@@ -142,8 +157,8 @@ open class ExchangeViewModel<T: Codable>: ViewModel, ExchangeViewModelProtocol {
             .flatMap { (currency, symbols, timeInterval) in
                 self.exchangeRatesApi
                     .requestRates(currency: currency, symbols: symbols ?? [], from: timeInterval?.0, until: timeInterval?.1)
-        }.subscribe(onNext: { self.accept(model: $0) },
-                    onError: { self.reject(error: $0) })
-        .disposed(by: disposeBag)
+            }.subscribe(onNext: { self.accept(model: $0) },
+                        onError: { self.reject(error: $0) })
+            .disposed(by: disposeBag)
     }
 }

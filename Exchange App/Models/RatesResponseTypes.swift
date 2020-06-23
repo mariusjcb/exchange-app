@@ -19,9 +19,6 @@ public struct RatesResponseType {
     public typealias Default = [Currency: Double]
     public typealias DateGrouped = [Date: Default]
 
-    /**
-
-     */
     public static func isValidExchangeRateType<T>(_ type: T.Type) -> Bool {
         switch type {
         case is Default.Type,

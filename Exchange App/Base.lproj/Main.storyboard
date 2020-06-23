@@ -467,6 +467,89 @@
             </objects>
             <point key="canvasLocation" x="86" y="138"/>
         </scene>
+        <!--Loader View Controller-->
+        <scene sceneID="bNN-SK-b09">
+            <objects>
+                <viewController storyboardIdentifier="LoadingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aoY-uj-ecI" customClass="LoaderViewController" customModule="Exchange_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xx0-Qi-uZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fge-aO-1mT">
+                                <rect key="frame" x="412" y="623" width="200" height="120"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kl-S9-3yR">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xi9-58-xs5">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="prominent"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </visualEffectView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SgF-4h-6hO">
+                                        <rect key="frame" x="53.5" y="25" width="93.5" height="74.5"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mgZ-sX-hNZ">
+                                                <rect key="frame" x="28" y="0.0" width="37" height="37"/>
+                                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJQ-AE-sAx">
+                                                <rect key="frame" x="0.0" y="49" width="93.5" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="BoS-uN-zKs"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Kl-S9-3yR" secondAttribute="trailing" id="KhW-iY-oWr"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Kl-S9-3yR" secondAttribute="bottom" id="U5H-OF-4mq"/>
+                                    <constraint firstItem="SgF-4h-6hO" firstAttribute="centerY" secondItem="Fge-aO-1mT" secondAttribute="centerY" constant="2" id="XE3-I6-1Sd"/>
+                                    <constraint firstItem="SgF-4h-6hO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fge-aO-1mT" secondAttribute="leading" constant="20" id="h5M-tE-0gk"/>
+                                    <constraint firstAttribute="width" constant="200" id="kAy-FO-AWG"/>
+                                    <constraint firstItem="SgF-4h-6hO" firstAttribute="centerX" secondItem="Fge-aO-1mT" secondAttribute="centerX" id="sKH-nZ-04w"/>
+                                    <constraint firstItem="0Kl-S9-3yR" firstAttribute="top" secondItem="Fge-aO-1mT" secondAttribute="top" id="wr8-aQ-ZlS"/>
+                                    <constraint firstItem="0Kl-S9-3yR" firstAttribute="leading" secondItem="Fge-aO-1mT" secondAttribute="leading" id="zOk-tB-8wT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fge-aO-1mT" firstAttribute="centerX" secondItem="xx0-Qi-uZQ" secondAttribute="centerX" id="kzY-kN-TZm"/>
+                            <constraint firstItem="Fge-aO-1mT" firstAttribute="centerY" secondItem="xx0-Qi-uZQ" secondAttribute="centerY" id="rUO-lf-SDi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ojN-aE-W5G"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haL-kq-wcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3231" y="-602"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="I9o-qb-foO">
             <objects>

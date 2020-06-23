@@ -16,6 +16,7 @@ public protocol ViewModel: class {
 }
 
 public protocol LoadableViewModel: class {
+    var isStarted: Driver<Bool> { get }
     var loading: Driver<Bool> { get }
     var error: Driver<Error?> { get }
 }

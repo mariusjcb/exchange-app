@@ -69,9 +69,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension UIApplication {
     var appDelegate: AppDelegate { delegate as! AppDelegate }
 
-    var mainShadowColor: UIColor? { appDelegate.mainShadowColor }
+    var mainSadowColor: UIColor? { appDelegate.mainShadowColor }
     var exchangeApiRequestsAdapter: ExchangeApiRequestAdapter { appDelegate.exchangeApiRequestsAdapter }
 
     var settingsSource: BehaviorRelay<AppSettings> { appDelegate.appSettingsSource }
     var settings: AppSettings { settingsSource.value }
+
+    var topViewController: UIViewController? {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+
+            return topController
+        }
+        return nil
+    }
+
+    func setLoader(_ active: Bool) {
+        active ? showLoader() : hideLoader()
+    }
+
+    func showLoader() {
+        guard !(topViewController is LoaderViewController) else { return }
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "LoadingViewController")
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        UIApplication.shared.topViewController?.present(controller, animated: true)
+    }
+
+    func hideLoader(_ completion:(() -> ())? = nil, animated: Bool = true) {
+        (topViewController as? LoaderViewController)?.dismiss(animated: animated) {
+            completion?()
+        }
+    }
 }

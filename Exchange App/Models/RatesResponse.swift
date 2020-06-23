@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct RatesResponse<T: Codable>: Codable {
+public struct RatesResponse<T: Codable & Equatable>: Codable, Equatable {
     public let rates: T
     public let base: Currency
     public let date: Date?
@@ -28,5 +28,13 @@ public struct RatesResponse<T: Codable>: Codable {
         self.firstDate = try? container.decode(Date.self, forKey: .base)
         self.lastDate = try? container.decode(Date.self, forKey: .base)
         self.rates = try RatesResponseType.decode(T.self, from: container, forKey: .rates)!
+    }
+
+    public static func == (lhs: RatesResponse<T>, rhs: RatesResponse<T>) -> Bool {
+        return lhs.rates == rhs.rates
+            && lhs.base == rhs.base
+            && lhs.date == rhs.date
+            && lhs.firstDate == rhs.firstDate
+            && lhs.lastDate == rhs.lastDate
     }
 }

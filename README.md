@@ -1,3 +1,5 @@
+> :warning: **Please ignore "wrong" usage of access levels**. It was intended to be multi-module app but I didn't finished it so that's why you could notice a access-level mess and some other code styling leaks.
+
 # Exchange App
 
 ## iOS Examples
